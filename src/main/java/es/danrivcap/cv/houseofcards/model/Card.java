@@ -9,16 +9,19 @@ import java.util.Objects;
  * and build the total number of cards whit the correct faces and suits 
  * 
  * It is generic because you can implement with any Enum you want the suits and faces you need Poker or Spanish Cards
+ * they are not subclases becaus Poker Cards or Spanish Cards don't have different behaviour or shape, it is only a 
+ * matter of constant or appearance that we can approach wich constants or enums for this reasons we are usings generics
+ * and interfaces for restristing the kind of values we allow as suits and faces 
  * 
  * Whit modern java versions (JDK > 14) we can transform this class in a record and it will operate like a real
  * value object or like a struct in C#
  **/
-public class Card<S extends Enum<S>,T extends Enum<T>> {
+public class Card<S extends Suit,F extends Face> {
 	private S suit;
 	
-	private T face;
+	private F face;
 
-	public Card(S suit, T face) {
+	public Card(S suit, F face) {
 		super();
 		this.suit = suit;
 		this.face = face;
@@ -28,7 +31,7 @@ public class Card<S extends Enum<S>,T extends Enum<T>> {
 		return suit;
 	}
 
-	public T getFace() {
+	public F getFace() {
 		return face;
 	}
 

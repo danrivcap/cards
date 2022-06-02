@@ -13,22 +13,22 @@ import java.util.Objects;
  * Whit modern java versions (JDK > 14) we can transform this class in a record and it will operate like a real
  * value object or like a struct in C#
  **/
-public class Card<T extends Enum<T>,S extends Enum<S>> {
-	private T suit;
+public class Card<S extends Enum<S>,T extends Enum<T>> {
+	private S suit;
 	
-	private S face;
+	private T face;
 
-	public Card(T suit, S face) {
+	public Card(S suit, T face) {
 		super();
 		this.suit = suit;
 		this.face = face;
 	}
 
-	public T getSuit() {
+	public S getSuit() {
 		return suit;
 	}
 
-	public S getFace() {
+	public T getFace() {
 		return face;
 	}
 

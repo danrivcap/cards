@@ -23,7 +23,8 @@ public interface Deck<S extends Suit ,F extends Face> {
 	
 	/**
 	 *Returns a card from the deck and nothing where no more cards are available	
-	 *never returns a duplicate card
+	 *never returns a duplicate card.
+	 *Optional allow client control of not card deal in a cleanner way than an Exception or a null
 	 **/
 	Optional<Card<S,F>>dealOneCard();
 	

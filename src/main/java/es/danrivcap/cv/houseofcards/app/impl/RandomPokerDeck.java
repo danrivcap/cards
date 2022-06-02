@@ -2,7 +2,6 @@ package es.danrivcap.cv.houseofcards.app.impl;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
-import java.util.Iterator;
 import java.util.Optional;
 import java.util.Set;
 
@@ -22,14 +21,16 @@ import es.danrivcap.cv.houseofcards.model.poker.PokerSuit;
 public class RandomPokerDeck implements Deck<Suit,Face>{
 
 	private static final int EMPTY = 0;
+	
+	
+	private static final int DEFAULT_POKER_DECK_BOTTOM = 0;
+	private static final int DEFAULT_POKER_DECK_SIZE = 52;
 	/*This is the default size for a poker deck but there are packaged
 	protected constructor whit could give other values for this value
 	for testing purposes.
 	*/
-	//TODO: Move this to an common class to reuse in other decks every deck have a size
-	private static final int DEFAULT_POKER_DECK_BOTTOM = 0;
-	private static final int DEFAULT_POKER_DECK_SIZE = 52;
-	private int deckSize = DEFAULT_POKER_DECK_SIZE;
+	protected int deckSize = DEFAULT_POKER_DECK_SIZE;
+
 	
 	//Deck holder where cards lives, I preffer ArrayList over Arrays due to API Flexibility and generic type system facilities. 
 	private ArrayList<Card<Suit,Face>> deck;
@@ -42,8 +43,8 @@ public class RandomPokerDeck implements Deck<Suit,Face>{
 	 * The client will initialize the Dect by a Factory to abstract the details of the Dependencies for this reasons this method
 	 * is private
 	 **/
-	public RandomPokerDeck() {
-		deck = new ArrayList<>(DEFAULT_POKER_DECK_SIZE);
+	private RandomPokerDeck() {
+		this.deck = new ArrayList<>(DEFAULT_POKER_DECK_SIZE);
 		build();
 	}
 
@@ -54,7 +55,7 @@ public class RandomPokerDeck implements Deck<Suit,Face>{
 	 * This method is package protected because the factory is located in the same pacakage and we dont want anyone calling it 
 	 * from outside and it allow to call the constructor from the test provided that the tests are in the same package as the class 
 	 **/
-	public RandomPokerDeck(Dealer dealer) {
+	RandomPokerDeck(Dealer dealer) {
 		this();
 		this.dealer = new RandomDealer(DEFAULT_POKER_DECK_BOTTOM,DEFAULT_POKER_DECK_SIZE);
 		

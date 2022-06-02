@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import es.danrivcap.cv.houseofcards.app.Dealer;
 import es.danrivcap.cv.houseofcards.app.Deck;
+import es.danrivcap.cv.houseofcards.app.impl.DeckFactory;
 import es.danrivcap.cv.houseofcards.app.impl.RandomDealer;
 import es.danrivcap.cv.houseofcards.app.impl.RandomPokerDeck;
 import es.danrivcap.cv.houseofcards.model.Card;
@@ -20,10 +21,8 @@ public class ClientApp {
 	 * Client application which acts as a test for the specification of the problem
 	 **/
 	public static void main(String[] args) {
-		Dealer dealer = new RandomDealer(0, 52);
-		Deck<Suit, Face> deck = new RandomPokerDeck(dealer);
-		
-	
+		Deck<Suit, Face> deck = DeckFactory.buildRandomPokerDect();
+			
 		for (int i = 0; i < 55; i++) {
 			Optional<Card<Suit,Face>> oCard = deck.dealOneCard();
 			//You can provide default card when you dont have more cads to obtain

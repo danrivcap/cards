@@ -37,6 +37,15 @@ public class RandomPokerDeck implements Deck<Suit,Face>{
 	 **/
 	public RandomPokerDeck() {
 		deck = new ArrayList<>(DEFAULT_POKER_DECK_SIZE);
+		build();
+		
+		
+	}
+
+	/**
+	 *Build internal Deck It could be delegated in a future to a external service if we want different building strategies 
+	 ***/
+	private void build() {
 		Set<PokerSuit> suits = EnumSet.allOf(PokerSuit.class);
 		Set<PokerFace> faces = EnumSet.allOf(PokerFace.class);
 		for (PokerSuit suit : suits) {
@@ -45,8 +54,6 @@ public class RandomPokerDeck implements Deck<Suit,Face>{
 				deck.add(card);
 			}
 		}
-		
-		
 	}
 	
 	/***

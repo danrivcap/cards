@@ -25,7 +25,12 @@ public class RandomDealer implements Dealer {
 	}
 	
 	@Override
+	/**
+	 * We deliver a random integer and control it is unique in a set, we control invariant not to get an infinite loop in runtime in the case anyone ask for more numbers are in a set.  
+	 **/
 	public int next() {
+		if ((max - min) == duplicateBag.size()) {throw new IllegalStateException("duplicate bag is full of numbers. Application is missconfigured there are trying to deal more numbers than cards are available");}
+		
 		boolean isNotPresent = false;
 		int selectedNumber = 0;
 		while(!isNotPresent) {

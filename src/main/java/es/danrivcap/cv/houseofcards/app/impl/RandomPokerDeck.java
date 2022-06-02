@@ -81,7 +81,7 @@ public class RandomPokerDeck implements Deck<Suit,Face>{
 	@Override
 	public void shufle() {
 		deckSize = DEFAULT_POKER_DECK_SIZE;
-		
+		dealer = new RandomDealer(DEFAULT_POKER_DECK_BOTTOM, DEFAULT_POKER_DECK_SIZE);
 	}
 
 

@@ -6,7 +6,7 @@ package es.danrivcap.cv.cards.model;
 public interface Face {
 
 	/**
-	 *It is suposed to be implemented by an enum so we want to expose this Enum API to be used later in toString methods
+	 *It is supposed to be implemented by an enum so we want to expose this Enum API to be used later in toString methods
 	 **/
 	String name();
 	

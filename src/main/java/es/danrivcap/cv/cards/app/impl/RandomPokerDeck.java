@@ -14,10 +14,11 @@ import es.danrivcap.cv.cards.model.poker.PokerFace;
 import es.danrivcap.cv.cards.model.poker.PokerSuit;
 
 /**
- * Concrete implementation of a Deck with a random stack os poker cards
- * it implement concrete Poker Cards 
- * it deals card randomly  
+Concrete implementation of a Deck with a random stack of poker cards
+* it implement concrete Poker Cards 
+* it deals card randomly
  **/
+
 public class RandomPokerDeck implements Deck<Suit,Face>{
 			
 	//Deck holder where cards lives, I preffer ArrayList over Arrays due to API Flexibility and generic type system facilities. 

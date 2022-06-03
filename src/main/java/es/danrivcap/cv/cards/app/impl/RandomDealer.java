@@ -26,7 +26,7 @@ public class RandomDealer implements Dealer {
 	
 	@Override
 	/**
-	 * We deliver a random integer and control it is unique in a set, we control invariant not to get an infinite loop in runtime in the case anyone ask for more numbers are in a set.  
+	 * We deliver a random integer and control it is unique in a set, we control invariants not to get an infinite loop in runtime in the case anyone asks for more numbers in a set.  
 	 **/
 	public int next() {
 		if (!hasNext()) {throw new IllegalStateException("duplicate bag is full of numbers. Application is missconfigured there are trying to deal more numbers than cards are available");}

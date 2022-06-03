@@ -1,17 +1,17 @@
-package es.danrivcap.cv.houseofcards.app.impl;
+package es.danrivcap.cv.cards.app.impl;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.Optional;
 import java.util.Set;
 
-import es.danrivcap.cv.houseofcards.app.Dealer;
-import es.danrivcap.cv.houseofcards.app.Deck;
-import es.danrivcap.cv.houseofcards.model.Card;
-import es.danrivcap.cv.houseofcards.model.Face;
-import es.danrivcap.cv.houseofcards.model.Suit;
-import es.danrivcap.cv.houseofcards.model.poker.PokerFace;
-import es.danrivcap.cv.houseofcards.model.poker.PokerSuit;
+import es.danrivcap.cv.cards.app.Dealer;
+import es.danrivcap.cv.cards.app.Deck;
+import es.danrivcap.cv.cards.model.Card;
+import es.danrivcap.cv.cards.model.Face;
+import es.danrivcap.cv.cards.model.Suit;
+import es.danrivcap.cv.cards.model.poker.PokerFace;
+import es.danrivcap.cv.cards.model.poker.PokerSuit;
 
 /**
  * Concrete implementation of a Deck with a random stack os poker cards
@@ -19,19 +19,7 @@ import es.danrivcap.cv.houseofcards.model.poker.PokerSuit;
  * it deals card randomly  
  **/
 public class RandomPokerDeck implements Deck<Suit,Face>{
-
-	private static final int EMPTY = 0;
-	
-	
-	private static final int DEFAULT_POKER_DECK_BOTTOM = 0;
-	private static final int DEFAULT_POKER_DECK_SIZE = 52;
-	/*This is the default size for a poker deck but there are packaged
-	protected constructor whit could give other values for this value
-	for testing purposes.
-	*/
-	protected int deckSize = DEFAULT_POKER_DECK_SIZE;
-
-	
+			
 	//Deck holder where cards lives, I preffer ArrayList over Arrays due to API Flexibility and generic type system facilities. 
 	private ArrayList<Card<Suit,Face>> deck;
 	
@@ -44,7 +32,6 @@ public class RandomPokerDeck implements Deck<Suit,Face>{
 	 * is private
 	 **/
 	private RandomPokerDeck() {
-		this.deck = new ArrayList<>(DEFAULT_POKER_DECK_SIZE);
 		build();
 	}
 
@@ -57,14 +44,14 @@ public class RandomPokerDeck implements Deck<Suit,Face>{
 	 **/
 	RandomPokerDeck(Dealer dealer) {
 		this();
-		this.dealer = new RandomDealer(DEFAULT_POKER_DECK_BOTTOM,DEFAULT_POKER_DECK_SIZE);
-		
+		this.dealer = dealer;
 	}
 	
 	/**
 	 *Build internal Deck It could be delegated in a future to a external service if we want different building strategies 
 	 ***/
 	private void build() {
+		this.deck = new ArrayList<>();
 		Set<PokerSuit> suits = EnumSet.allOf(PokerSuit.class);
 		Set<PokerFace> faces = EnumSet.allOf(PokerFace.class);
 		for (PokerSuit suit : suits) {
@@ -81,8 +68,7 @@ public class RandomPokerDeck implements Deck<Suit,Face>{
 	 ***/
 	@Override
 	public void shufle() {
-		deckSize = DEFAULT_POKER_DECK_SIZE;
-		dealer = new RandomDealer(DEFAULT_POKER_DECK_BOTTOM, DEFAULT_POKER_DECK_SIZE);
+		dealer.reset();
 	}
 
 
@@ -94,8 +80,7 @@ public class RandomPokerDeck implements Deck<Suit,Face>{
 	 * in this class is fixed but in ohters you can choose in construction time.
 	 ***/
 	public Optional<Card<Suit, Face>> dealOneCard() {
-		if(deckSize != EMPTY){
-			deckSize--;
+		if(dealer.hasNext()){
 			return Optional.of(deck.get(dealer.next()));
 		}else {
 			return Optional.empty();

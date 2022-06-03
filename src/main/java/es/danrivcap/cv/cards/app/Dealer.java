@@ -1,4 +1,4 @@
-package es.danrivcap.cv.houseofcards.app;
+package es.danrivcap.cv.cards.app;
 
 /**
  * Deals next number to obtain a Card based in a Strategy there would be diferent ways
@@ -9,5 +9,9 @@ package es.danrivcap.cv.houseofcards.app;
 public interface Dealer {
 
 	int next();
+	
+	void reset();
+	
+	boolean hasNext();
 	
 }

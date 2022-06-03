@@ -1,9 +1,9 @@
-package es.danrivcap.cv.houseofcards.app.impl;
+package es.danrivcap.cv.cards.app.impl;
 
-import es.danrivcap.cv.houseofcards.app.Dealer;
-import es.danrivcap.cv.houseofcards.app.Deck;
-import es.danrivcap.cv.houseofcards.model.Face;
-import es.danrivcap.cv.houseofcards.model.Suit;
+import es.danrivcap.cv.cards.app.Dealer;
+import es.danrivcap.cv.cards.app.Deck;
+import es.danrivcap.cv.cards.model.Face;
+import es.danrivcap.cv.cards.model.Suit;
 
 /***
  * Factory class to create different implementations of a Deck and decouple the client of the implementation 

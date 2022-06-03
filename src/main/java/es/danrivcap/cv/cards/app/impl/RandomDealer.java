@@ -1,10 +1,10 @@
-package es.danrivcap.cv.houseofcards.app.impl;
+package es.danrivcap.cv.cards.app.impl;
 
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-import es.danrivcap.cv.houseofcards.app.Dealer;
+import es.danrivcap.cv.cards.app.Dealer;
 
 public class RandomDealer implements Dealer {
 
@@ -14,7 +14,7 @@ public class RandomDealer implements Dealer {
 	private Random random; 
 	
 	public RandomDealer() {
-		this.duplicateBag = new HashSet<>();
+		reset();
 		this.random = new Random();
 	}
 	
@@ -29,7 +29,7 @@ public class RandomDealer implements Dealer {
 	 * We deliver a random integer and control it is unique in a set, we control invariant not to get an infinite loop in runtime in the case anyone ask for more numbers are in a set.  
 	 **/
 	public int next() {
-		if ((max - min) == duplicateBag.size()) {throw new IllegalStateException("duplicate bag is full of numbers. Application is missconfigured there are trying to deal more numbers than cards are available");}
+		if (!hasNext()) {throw new IllegalStateException("duplicate bag is full of numbers. Application is missconfigured there are trying to deal more numbers than cards are available");}
 		
 		boolean isNotPresent = false;
 		int selectedNumber = 0;
@@ -38,6 +38,16 @@ public class RandomDealer implements Dealer {
 			isNotPresent = this.duplicateBag.add(selectedNumber);
 		}		
 		return selectedNumber;
+	}
+
+	@Override
+	public void reset() {
+		this.duplicateBag = new HashSet<>();
+	}
+
+	@Override
+	public boolean hasNext() {
+		return (max - min) != duplicateBag.size();
 	}
 
 }

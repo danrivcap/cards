@@ -1,4 +1,4 @@
-package es.danrivcap.cv.houseofcards.model;
+package es.danrivcap.cv.cards.model;
 
 import java.util.Objects;
 

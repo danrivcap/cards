@@ -1,12 +1,10 @@
-package es.danrivcap.cv.houseofcards.app;
+package es.danrivcap.cv.cards.app;
 
 import java.util.Optional;
 
-import es.danrivcap.cv.houseofcards.model.Card;
-import es.danrivcap.cv.houseofcards.model.Face;
-import es.danrivcap.cv.houseofcards.model.Suit;
-import es.danrivcap.cv.houseofcards.model.poker.PokerFace;
-import es.danrivcap.cv.houseofcards.model.poker.PokerSuit;
+import es.danrivcap.cv.cards.model.Card;
+import es.danrivcap.cv.cards.model.Face;
+import es.danrivcap.cv.cards.model.Suit;
 
 /**
  * Public contract of a card Deckt, it could be multiple implementations of a Deck in shape (Pocker, Spanish) and

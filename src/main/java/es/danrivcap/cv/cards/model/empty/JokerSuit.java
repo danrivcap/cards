@@ -1,6 +1,6 @@
-package es.danrivcap.cv.houseofcards.model.empty;
+package es.danrivcap.cv.cards.model.empty;
 
-import es.danrivcap.cv.houseofcards.model.Suit;
+import es.danrivcap.cv.cards.model.Suit;
 
 public enum JokerSuit implements Suit{
 	JOKER
